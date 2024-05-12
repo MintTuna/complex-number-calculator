@@ -12,6 +12,8 @@ def coordinateDraw(x, y):
 #복소평면 위의 그려진 선의 각도를 반환하는 함수
 def returnAngle(x, y):
     angle = math.degrees(math.atan(y / x))
+    if (angle < 0):
+        angle = 90 - abs(angle)
     #1사분면
     if (x>0 and y>0):
         print(angle)
@@ -37,8 +39,13 @@ q = math.sqrt((-a+math.sqrt(a*a + b*b))/2)
 if (b<0):
     p = -p #b의 부호에 따라 제곱근의 부호가 달라짐
 
+m = p*p - q*q #제곱근을 제곱한 값의 실수부
+n = 2*p*q #제곱근을 제곱한 값의 허수부
+
 #출력
 print("%f + %fi 의 제곱근은 %f + %fi 그리고 %f + %fi 입니다" %(a, b, p, q, -p, -q))
+#확인하는 부분
+print("%f + %fi 그리고 %f + %f 를 제곱한 값은 %f + %fi 입니다" %(p, q, -p, -q, m, n))
 
 #가로축, 세로축 그리기
 t.goto(0, 0)
